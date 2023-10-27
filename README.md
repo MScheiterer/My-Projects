@@ -9,4 +9,4 @@ Description:
 
 Current Projects:
 - Command-line based tutoring Platform written in Python, using a MySQL Database, coded for Harvard's CS50X course
-- Simple auctioning website, similar to Ebay, coded for Harvard's CS50W course using HTML, CSS, Python with Django 
+- auction: Simple auctioning website, similar to Ebay, coded for Harvard's CS50W course using HTML, CSS, Python with Django 
