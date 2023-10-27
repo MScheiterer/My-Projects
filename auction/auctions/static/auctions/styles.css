@@ -1,0 +1,63 @@
+body {
+    padding: 10px;
+    height: 100vh;
+}
+
+.user {
+    background-color: lightgrey;
+    border: 1px solid grey;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.listing-header {
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    border: 2px solid grey;
+    border-radius: 5px;
+}
+
+#header-child1 {
+    margin: 5px;
+    flex: 10;
+}
+
+#header-child2 {
+    margin: 5px;
+    flex:1;
+}
+
+.listing-body {
+    display: flex;
+    height: auto;
+}
+
+.comments {
+    margin: 5px;
+    padding: 5px;
+    flex: 1;
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: start;
+    max-height: 100%;
+}
+
+.listing-details {
+    margin: 5px;
+    padding: 5px;
+    flex: 2;
+    border: 2px solid grey;
+    border-radius: 5px;
+    text-align: start;
+    height:100%;
+}
+
+.header-child-details {
+    flex-basis: auto;
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid grey;
+    border-radius: 5px;
+}

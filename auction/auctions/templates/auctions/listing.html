@@ -1,0 +1,88 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<div style="height:100%;">
+    <div class="listing-header">
+        <div id="header-child1">
+            <h1>{{ listing.title }}</h1>
+            {% if listing.current_bid %}
+                <h4>Current Price: {{ listing.current_bid }}</h4>
+                last bid placed by: {{ listing.current_bid.user }}
+            {% else %}
+                <h4>Current Price: {{ listing.starting_bid }}</h4>
+            {% endif %}
+            <div style="display: flex;">
+                <div class="header-child-details">
+                    <a href="{% url 'active_listings' %}" style="text-decoration: none;">Back</a>
+                </div>
+                {% if watchlisted %}
+                    <div class="header-child-details">
+                        <a href="{% url 'watchlist_remove' listing.id %}" style="text-decoration: none;">Remove from Watchlist</a>
+                    </div>
+                {% else %}
+                    <div class="header-child-details">
+                        <a href="{% url 'watchlist_add' listing.id %}" style="text-decoration: none;">Add to Watchlist</a>
+                    </div>
+                {% endif %}
+                {% if listing.category %}
+                    <div class="header-child-details">
+                        <a href="{% url 'listings_in_category' listing.category %}" style="text-decoration: none;"> {{ listing.category }}</a>
+                    </div>
+                {% endif %}
+                {% if listing.user == user and listing.active %}
+                    <div class="header-child-details">
+                        <a href="{% url 'close_listing' listing.id %}" style="text-decoration: none;"> Close Auction</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        uploaded by
+        <div class="user" id="header-child2">
+                {{ listing.user }}
+        </div>
+    </div>
+    <hr>
+    <div class="listing-body"> 
+        <div class="listing-details">
+            {{ listing.description }} 
+            {% if not listing.active %}
+                {% if listing.winner == user %}
+                    <strong>This listing is closed. Item #{{ listing.id}} has been sold to: {{ listing.winner }}</strong>
+                {% else %}
+                    <strong>This auction is closed.</strong>
+                {% endif %}
+            {% else %}
+                {% if listing.user != user %}
+                <form action="{% url 'place_bid' listing.id %}" method="post">
+                    {% csrf_token %}
+                    {{ bidding_form }}
+                    <input type="submit" value="Place Bid">
+                </form>
+                <hr>
+                {% endif %}
+            {% endif %}
+            {% if listing.image %}
+                <div class="aspect-ratio-box">
+                    <img class="img-fluid" src="{{ listing.image.url }}" alt="Uploaded Image">
+                </div>
+            {% endif %}
+        </div>
+        <div class="comments">
+            {% if comments %}
+                {% for comment in comments %}
+                    <p style="font-size:x-small;">{{ comment.user }} commented <a style="font-size:medium;">{{ comment }}</a></p><hr>
+                {% endfor %}
+            {% else %}
+                <div>No comments yet.</div>
+            {% endif %}
+            <div>
+                <form action="{% url 'add_comment' listing.id %}" method="post">
+                    {% csrf_token %}
+                    {{ comment_form }}
+                    <input type="submit" value="Comment">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
