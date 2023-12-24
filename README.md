@@ -5,7 +5,7 @@ Age: 20
 Education: Undergraduate Computer Engineering Student at RWTH Aachen, Germany 
 
 Description:
-**This is a repository containing personal projects that I built to develop my practical programming skills alongside the theoretical skills I learn at University.**
+**This is a repository containing personal projects that I built to develop my practical programming skills alongside the theoretical skills I learn at University. I apologize for the lack of attention for the appearance of the projects, but since I am mostly interested in the logical aspect I tend to not spend as much time with CSS.**
 
 Current Projects:
 - tutoring-command-line: Command-line based tutoring Platform written in **Python**, using a **MySQL** Database, coded for Harvard's CS50X course
